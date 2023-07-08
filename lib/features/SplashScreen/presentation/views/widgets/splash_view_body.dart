@@ -1,6 +1,8 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/features/HomeScreen/representation/views/home_view.dart';
 import 'package:bookly/features/SplashScreen/presentation/views/widgets/slide_fadein_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
@@ -17,6 +19,13 @@ class _SplashViewBodyState extends State<SplashViewBody>  with SingleTickerProvi
   void initState() {
     initAnimation();
     super.initState();
+    navigateToHome();
+  }
+
+  void navigateToHome() {
+    Future.delayed(const Duration(milliseconds: 2000),(){
+      Get.to(()=>const HomeView(),transition: Transition.leftToRightWithFade);
+    });
   }
 
   void initAnimation() {
