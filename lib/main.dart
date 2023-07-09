@@ -1,6 +1,7 @@
 import 'package:bookly/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'features/SplashScreen/presentation/views/splash_view.dart';
 
@@ -18,9 +19,13 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: primaryColor),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: primaryColor,
+        textTheme: GoogleFonts.montserratTextTheme(
+          ThemeData.dark().textTheme,
+        ),
+      ),
       home: const SplashView(),
     );
   }
 }
-
