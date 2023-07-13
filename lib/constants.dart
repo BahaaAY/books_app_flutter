@@ -14,3 +14,4 @@ const fontGtSectraFine = 'GT Sectra Fine';
 const splashRoute = '/';
 const homeRoute = '/home';
 const detailsRoute = '/details';
+const searchRoute = '/search';
