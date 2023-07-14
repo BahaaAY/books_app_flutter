@@ -44,12 +44,9 @@ class HomeViewBody extends StatelessWidget {
               return const BestSellerItem();
             },
             childCount: 10,
-
           ),
-
         ),
       ],
     );
   }
 }
-

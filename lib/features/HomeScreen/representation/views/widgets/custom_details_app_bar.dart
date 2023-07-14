@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 class CustomDetailsAppBar extends StatelessWidget {
   const CustomDetailsAppBar({
-  super.key,
+    super.key,
   });
 
   @override

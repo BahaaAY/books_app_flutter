@@ -11,7 +11,8 @@ class SplashViewBody extends StatefulWidget {
   State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody>  with SingleTickerProviderStateMixin{
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnim;
   late Animation<double> fadeInAnim;
@@ -23,22 +24,29 @@ class _SplashViewBodyState extends State<SplashViewBody>  with SingleTickerProvi
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(milliseconds: 2000),(){
+    Future.delayed(const Duration(milliseconds: 2000), () {
       GoRouter.of(context).pushReplacement(homeRoute);
     });
   }
 
   void initAnimation() {
-    animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 1200),);
-    slidingAnim = Tween<Offset>(begin: const Offset(0, 2), end:const Offset(0,0) ).animate(animationController);
-    fadeInAnim = Tween<double>(begin: 0,end: 1).animate(animationController);
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+    slidingAnim =
+        Tween<Offset>(begin: const Offset(0, 2), end: const Offset(0, 0))
+            .animate(animationController);
+    fadeInAnim = Tween<double>(begin: 0, end: 1).animate(animationController);
     animationController.forward();
   }
+
   @override
   void dispose() {
     animationController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,12 +59,12 @@ class _SplashViewBodyState extends State<SplashViewBody>  with SingleTickerProvi
         ),
         AnimatedBuilder(
           animation: slidingAnim,
-          builder: (context, _){
-            return SlidingFadeInText(fadeInAnim: fadeInAnim, slidingAnim: slidingAnim);
+          builder: (context, _) {
+            return SlidingFadeInText(
+                fadeInAnim: fadeInAnim, slidingAnim: slidingAnim);
           },
         ),
       ],
     );
   }
 }
-

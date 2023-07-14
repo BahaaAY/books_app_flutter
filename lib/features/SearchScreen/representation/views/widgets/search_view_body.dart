@@ -17,7 +17,7 @@ class SearchViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  const [
+            children: const [
               CustomSearchAppBar(),
               SizedBox(
                 height: 16,
@@ -39,7 +39,6 @@ class SearchViewBody extends StatelessWidget {
             ],
           ),
         ),
-
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {

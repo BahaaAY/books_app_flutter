@@ -7,13 +7,14 @@ import 'book_rating.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({
-  super.key,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: mainPadding,vertical: 10),
+      padding:
+          const EdgeInsets.symmetric(horizontal: mainPadding, vertical: 10),
       child: SizedBox(
         height: 100,
         child: Row(
@@ -67,7 +68,6 @@ class BestSellerItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       const BookRating(),
-
                     ],
                   ),
                 ],
@@ -79,4 +79,3 @@ class BestSellerItem extends StatelessWidget {
     );
   }
 }
-

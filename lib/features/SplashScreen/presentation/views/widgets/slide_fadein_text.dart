@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class SlidingFadeInText extends StatelessWidget {
   const SlidingFadeInText({
-  super.key,
-  required this.fadeInAnim,
-  required this.slidingAnim,
+    super.key,
+    required this.fadeInAnim,
+    required this.slidingAnim,
   });
 
   final Animation<double> fadeInAnim;
@@ -19,9 +19,7 @@ class SlidingFadeInText extends StatelessWidget {
         child: const Text(
           'Free Books Resource',
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 18
-          ),
+          style: TextStyle(fontSize: 18),
         ),
       ),
     );

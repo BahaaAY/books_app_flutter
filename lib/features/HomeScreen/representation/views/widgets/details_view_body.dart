@@ -38,4 +38,3 @@ class DetailsViewBody extends StatelessWidget {
     );
   }
 }
-

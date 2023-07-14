@@ -17,8 +17,7 @@ class FeaturedListItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
                 image: const DecorationImage(
-                    image: AssetImage(AssetsData.testImage),
-                    fit: BoxFit.fill)),
+                    image: AssetImage(AssetsData.testImage), fit: BoxFit.fill)),
           ),
         ),
         /**Container(

@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
-  super.key,
+    super.key,
   });
 
   @override
@@ -14,13 +14,13 @@ class SearchTextField extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Book Title?',
-          enabledBorder:  OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: Colors.white,
             ),
             borderRadius: BorderRadius.circular(12),
           ),
-          focusedBorder:  OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: Colors.white,
             ),
@@ -38,7 +38,8 @@ class SearchTextField extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-          ),),
+          ),
+        ),
       ),
     );
   }

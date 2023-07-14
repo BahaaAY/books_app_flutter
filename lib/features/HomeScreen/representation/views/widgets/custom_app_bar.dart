@@ -6,10 +6,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/assets.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar
-
-  ({
-  super.key,
+  const CustomAppBar({
+    super.key,
   });
 
   @override

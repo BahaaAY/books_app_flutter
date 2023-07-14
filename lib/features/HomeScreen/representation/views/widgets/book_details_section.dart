@@ -12,10 +12,11 @@ class BookDetailsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Column(
-      children: [Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.3),
-        child: const FeaturedListItem(),
-      ),
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.3),
+          child: const FeaturedListItem(),
+        ),
         const SizedBox(
           height: 32,
         ),
@@ -50,7 +51,7 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 38),
           child: Row(
-            children:  [
+            children: [
               Expanded(
                 child: CustomButton(
                   textStyle: Styles.textStyle18.copyWith(
@@ -79,7 +80,8 @@ class BookDetailsSection extends StatelessWidget {
               ),
             ],
           ),
-        ),],
+        ),
+      ],
     );
   }
 }
