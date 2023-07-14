@@ -3,8 +3,6 @@ import 'package:bookly/core/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'features/SplashScreen/presentation/views/splash_view.dart';
-
 void main() {
   runApp(const MyApp());
 }
