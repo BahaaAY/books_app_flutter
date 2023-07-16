@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
+import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
 import 'package:flutter/material.dart';
 
 import 'book_rating.dart';
@@ -44,8 +47,12 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        const BookRating(
+        BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
+          bookRating: RatingModel(
+            rating: Random().nextDouble() * 5,
+            ratingCount: 1 + Random().nextInt(1000),
+          ),
         ),
         const SizedBox(
           height: 38,

@@ -1,7 +1,8 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/HomeScreen/representation/views/widgets/newest_list_view.dart';
 import 'package:flutter/material.dart';
-import 'best_seller_item.dart';
+import 'newest_books_list_item.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
@@ -38,14 +39,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return const BestSellerItem();
-            },
-            childCount: 10,
-          ),
-        ),
+        const NewestBooksListView(),
       ],
     );
   }

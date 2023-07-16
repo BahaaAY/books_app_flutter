@@ -7,18 +7,18 @@ abstract class NewestBooksState extends Equatable {
   List<Object> get props => [];
 }
 
-class NewestBooksInitial extends NewestBooksState {}
+class NewestBooksInitialState extends NewestBooksState {}
 
-class NewestBooksLoading extends NewestBooksState {}
+class NewestBooksLoadingState extends NewestBooksState {}
 
-class NewestBooksSuccess extends NewestBooksState {
+class NewestBooksSuccessState extends NewestBooksState {
   final List<BookModel> books;
 
-  const NewestBooksSuccess(this.books);
+  const NewestBooksSuccessState(this.books);
 }
 
-class NewestBooksError extends NewestBooksState {
+class NewestBooksErrorState extends NewestBooksState {
   final String error;
 
-  const NewestBooksError(this.error);
+  const NewestBooksErrorState(this.error);
 }

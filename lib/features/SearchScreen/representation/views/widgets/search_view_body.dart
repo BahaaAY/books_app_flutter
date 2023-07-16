@@ -1,6 +1,6 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/HomeScreen/representation/views/widgets/best_seller_item.dart';
+import 'package:bookly/features/HomeScreen/representation/views/widgets/newest_books_list_item.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_search_appbar.dart';
@@ -42,7 +42,8 @@ class SearchViewBody extends StatelessWidget {
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return const BestSellerItem();
+              //return const NewestBooksListItem();
+              return Text("dummy");
             },
             childCount: 10,
           ),

@@ -1,15 +1,21 @@
+import 'dart:math';
+
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/HomeScreen/data/models/book_model/book_model.dart';
+import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
+import 'package:bookly/features/HomeScreen/representation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 import 'book_rating.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({
+class NewestBooksListItem extends StatelessWidget {
+  const NewestBooksListItem({
     super.key,
+    required this.book,
   });
-
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,18 +25,7 @@ class BestSellerItem extends StatelessWidget {
         height: 100,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 5 / 8,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6.0),
-                  image: const DecorationImage(
-                    image: AssetImage(AssetsData.testImage),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
+            CustomBookImage(imgUrl: book.volumeInfo.imageLinks.thumbnail),
             const SizedBox(
               width: 30,
             ),
@@ -39,7 +34,7 @@ class BestSellerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'My Book title',
+                    book.volumeInfo.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20.copyWith(
@@ -49,8 +44,8 @@ class BestSellerItem extends StatelessWidget {
                   const SizedBox(
                     height: 4,
                   ),
-                  const Text(
-                    'Rudyard Kipling',
+                  Text(
+                    getAuthors(book.volumeInfo.authors!),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14,
@@ -61,13 +56,18 @@ class BestSellerItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     children: [
                       Text(
-                        '19.99\$',
+                        'Free',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      const BookRating(),
+                      BookRating(
+                        bookRating: RatingModel(
+                          rating: 4 + Random().nextDouble() * 1,
+                          ratingCount: 500 + Random().nextInt(501),
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -77,5 +77,14 @@ class BestSellerItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String getAuthors(List<String> authors) {
+    String authorsFull = '';
+    for (String author in authors) {
+      authorsFull = '$authorsFull$author, ';
+    }
+    authorsFull = authorsFull.substring(0, authorsFull.length - 2);
+    return authorsFull;
   }
 }
