@@ -25,6 +25,7 @@ class HomeRepoImplementaion implements HomeRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
+      print(e.toString());
       return left(
           ServerFailure("Opps, something went wrong, please try again!"));
     }
@@ -46,6 +47,7 @@ class HomeRepoImplementaion implements HomeRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
+      print(e.toString());
       return left(
           ServerFailure("Opps, something went wrong, please try again!"));
     }

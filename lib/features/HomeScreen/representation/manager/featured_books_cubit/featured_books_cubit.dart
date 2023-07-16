@@ -3,17 +3,17 @@ import 'package:bookly/features/HomeScreen/representation/manager/featured_books
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitial());
+  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitialState());
 
   final HomeRepo homeRepo;
 
   Future<void> fetchFeaturedBooks() async {
-    emit(FeaturedBooksLoading());
+    emit(FeaturedBooksLoadingState());
     var result = await homeRepo.fetchFeaturedBooks();
     result.fold((failure) {
-      emit(FeaturedBooksError(failure.errorMsg));
+      emit(FeaturedBooksErrorState(failure.errorMsg));
     }, (books) {
-      emit(FeaturedBooksSuccess(books));
+      emit(FeaturedBooksSuccessState(books));
     });
   }
 }

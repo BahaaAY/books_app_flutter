@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class FeaturedListItem extends StatelessWidget {
   const FeaturedListItem({
     super.key,
+    required this.imgUrl,
   });
-
+  final String imgUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -16,24 +17,10 @@ class FeaturedListItem extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.0),
-                image: const DecorationImage(
-                    image: AssetImage(AssetsData.testImage), fit: BoxFit.fill)),
+                image: DecorationImage(
+                    image: NetworkImage(imgUrl), fit: BoxFit.fill)),
           ),
         ),
-        /**Container(
-          width: 46,
-          margin: const EdgeInsets.all(4),
-          child: FloatingActionButton(
-            backgroundColor: primaryColor,
-
-            child: const Icon(
-              FontAwesomeIcons.bookOpenReader,
-              size: 23,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
-        ),**/
       ],
     );
   }

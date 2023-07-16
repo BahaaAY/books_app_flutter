@@ -15,7 +15,9 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.3),
-          child: const FeaturedListItem(),
+          child: const FeaturedListItem(
+            imgUrl: 'https://edit.org/book-covers',
+          ),
         ),
         const SizedBox(
           height: 32,

@@ -30,7 +30,7 @@ class ServerFailure extends Failure {
             return ServerFailure('No Internet Connection');
           }
         }
-        return ServerFailure('Opps something went wrong, please try again!');
+        return ServerFailure('Unknown Connection Error, please try again!');
       case DioExceptionType.unknown:
         return ServerFailure(dioException.error.toString());
 

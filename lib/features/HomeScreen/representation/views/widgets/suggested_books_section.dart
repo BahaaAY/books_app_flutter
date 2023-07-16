@@ -38,7 +38,9 @@ class SuggestedBooksSection extends StatelessWidget {
                     onTap: () {
                       GoRouter.of(context).pushReplacement(detailsRoute);
                     },
-                    child: const FeaturedListItem());
+                    child: const FeaturedListItem(
+                      imgUrl: 'https://edit.org/book-covers',
+                    ));
               },
               separatorBuilder: (context, index) {
                 return const SizedBox(
