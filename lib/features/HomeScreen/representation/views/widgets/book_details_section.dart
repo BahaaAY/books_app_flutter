@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
+import 'package:bookly/features/HomeScreen/data/models/book_model/book_model.dart';
 import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,8 @@ import 'book_rating.dart';
 import 'featured_list_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({Key? key}) : super(key: key);
+  const BookDetailsSection({Key? key, required this.book}) : super(key: key);
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +20,22 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.3),
-          child: const FeaturedListItem(
-            imgUrl: 'https://edit.org/book-covers',
+          child: FeaturedListItem(
+            imgUrl: book.volumeInfo.imageLinks?.thumbnail ??
+                'https://edit.org/images/cat/book-covers-big-2019101610.jpg',
           ),
         ),
         const SizedBox(
           height: 32,
         ),
         Text(
-          'The First Book',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          book.volumeInfo.title ?? 'Title not found!',
           style: Styles.textStyle30.copyWith(
             fontWeight: FontWeight.normal,
           ),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 6,
@@ -37,7 +43,12 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            'Book Author',
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            getAuthors(book.volumeInfo.authors ?? List.empty()).isEmpty
+                ? 'Author not Found '
+                : getAuthors(book.volumeInfo.authors!),
             style: Styles.textStyle18.copyWith(
               fontWeight: FontWeight.w500,
               fontStyle: FontStyle.italic,
@@ -70,7 +81,7 @@ class BookDetailsSection extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12),
                       bottomLeft: Radius.circular(12)),
-                  text: '19.99\$',
+                  text: 'Free',
                   backgroundColor: Colors.white,
                 ),
               ),
@@ -79,7 +90,7 @@ class BookDetailsSection extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(12),
                       bottomRight: Radius.circular(12)),
-                  text: 'Free Preview',
+                  text: 'Preview',
                   backgroundColor: const Color(0XFFef8262),
                   textStyle: Styles.textStyle16.copyWith(
                     color: Colors.white,
@@ -93,4 +104,13 @@ class BookDetailsSection extends StatelessWidget {
       ],
     );
   }
+}
+
+String getAuthors(List<String> authors) {
+  String authorsFull = '';
+  for (String author in authors) {
+    authorsFull = '$authorsFull$author, ';
+  }
+  authorsFull = authorsFull.substring(0, authorsFull.length - 2);
+  return authorsFull;
 }

@@ -25,7 +25,9 @@ class NewestBooksListItem extends StatelessWidget {
         height: 100,
         child: Row(
           children: [
-            CustomBookImage(imgUrl: book.volumeInfo.imageLinks.thumbnail),
+            CustomBookImage(
+                imgUrl: book.volumeInfo.imageLinks?.thumbnail ??
+                    'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
             const SizedBox(
               width: 30,
             ),

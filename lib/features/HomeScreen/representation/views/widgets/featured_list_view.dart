@@ -28,11 +28,13 @@ class FeaturedListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                     onTap: () {
-                      GoRouter.of(context).push(detailsRoute);
+                      GoRouter.of(context)
+                          .push(detailsRoute, extra: state.books[index]);
                     },
                     child: FeaturedListItem(
-                      imgUrl:
-                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                      imgUrl: state
+                              .books[index].volumeInfo.imageLinks?.thumbnail ??
+                          'https://edit.org/images/cat/book-covers-big-2019101610.jpg',
                     ));
               },
               separatorBuilder: (context, index) {

@@ -10,6 +10,7 @@ class ServerFailure extends Failure {
   ServerFailure(String errorMsg) : super(errorMsg);
 
   factory ServerFailure.fromDioError(DioException dioException) {
+    print(dioException.type);
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timedout, please try again!');
@@ -32,6 +33,12 @@ class ServerFailure extends Failure {
         }
         return ServerFailure('Unknown Connection Error, please try again!');
       case DioExceptionType.unknown:
+        print(dioException.error);
+        if (dioException.error != null) {
+          if (dioException.error!.toString().contains('SocketException')) {
+            return ServerFailure('No Internet Connection');
+          }
+        }
         return ServerFailure(dioException.error.toString());
 
       default:
