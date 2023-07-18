@@ -1,4 +1,4 @@
-import 'package:bookly/features/HomeScreen/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class FeaturedBooksState extends Equatable {

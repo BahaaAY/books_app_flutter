@@ -1,8 +1,8 @@
 import 'dart:math';
-
+import 'package:bookly/core/functions/launch_custom_url.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/widgets/custom_text_button.dart';
-import 'package:bookly/features/HomeScreen/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
 import 'package:flutter/material.dart';
 
@@ -87,10 +87,14 @@ class BookDetailsSection extends StatelessWidget {
               ),
               Expanded(
                 child: CustomButton(
+                  onPressed: () {
+                    launchCustomUrl(context, book.volumeInfo.previewLink);
+                  },
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(12),
                       bottomRight: Radius.circular(12)),
-                  text: 'Preview',
+                  text: getPreviewText(
+                      bookPreviewLink: book.volumeInfo.previewLink),
                   backgroundColor: const Color(0XFFef8262),
                   textStyle: Styles.textStyle16.copyWith(
                     color: Colors.white,
@@ -103,6 +107,14 @@ class BookDetailsSection extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+String getPreviewText({String? bookPreviewLink}) {
+  if (bookPreviewLink == null) {
+    return 'No Preview';
+  } else {
+    return 'Preview';
   }
 }
 

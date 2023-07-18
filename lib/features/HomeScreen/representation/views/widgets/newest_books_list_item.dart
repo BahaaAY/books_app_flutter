@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/HomeScreen/data/models/book_model/book_model.dart';
+import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
 import 'package:bookly/features/HomeScreen/representation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
