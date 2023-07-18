@@ -5,6 +5,8 @@ import 'package:bookly/features/HomeScreen/data/repos/home_repo_impl.dart';
 import 'package:bookly/features/HomeScreen/representation/manager/book_details_cubit/book_details_cubit.dart';
 import 'package:bookly/features/HomeScreen/representation/views/details_view.dart';
 import 'package:bookly/features/HomeScreen/representation/views/home_view.dart';
+import 'package:bookly/features/SearchScreen/data/manager/search_cubit/search_cubit.dart';
+import 'package:bookly/features/SearchScreen/data/repos/search_repo_impl.dart';
 import 'package:bookly/features/SearchScreen/representation/views/search_view.dart';
 import 'package:bookly/features/SplashScreen/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +74,11 @@ class AppRouter {
           return CustomTransitionPage(
               key: state.pageKey,
               transitionDuration: const Duration(milliseconds: 300),
-              child: const SearchView(),
+              child: BlocProvider(
+                create: (context) =>
+                    SearchCubit(searchRepo: getIt.get<SearchRepoImpl>()),
+                child: const SearchView(),
+              ),
               transitionsBuilder: (context, animation, secondary, child) {
                 const begin = Offset(0.0, 1.0);
                 const end = Offset.zero;

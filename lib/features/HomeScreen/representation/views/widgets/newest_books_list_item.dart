@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/core/models/book_model/book_model.dart';
 import 'package:bookly/features/HomeScreen/data/models/rating_model/rating_model.dart';
@@ -36,7 +35,7 @@ class NewestBooksListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    book.volumeInfo.title!,
+                    book.volumeInfo.title ?? 'no title',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20.copyWith(
@@ -47,7 +46,7 @@ class NewestBooksListItem extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    getAuthors(book.volumeInfo.authors!),
+                    getAuthors(book.volumeInfo.authors),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14,
@@ -81,12 +80,16 @@ class NewestBooksListItem extends StatelessWidget {
     );
   }
 
-  String getAuthors(List<String> authors) {
-    String authorsFull = '';
-    for (String author in authors) {
-      authorsFull = '$authorsFull$author, ';
+  String getAuthors(List<String>? authors) {
+    if (authors != null) {
+      String authorsFull = '';
+      for (String author in authors) {
+        authorsFull = '$authorsFull$author, ';
+      }
+      authorsFull = authorsFull.substring(0, authorsFull.length - 2);
+      return authorsFull;
+    } else {
+      return '';
     }
-    authorsFull = authorsFull.substring(0, authorsFull.length - 2);
-    return authorsFull;
   }
 }

@@ -5,13 +5,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SearchTextField extends StatelessWidget {
   const SearchTextField({
     super.key,
+    this.onChanged,
   });
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: mainPadding),
       child: TextField(
+        onChanged: onChanged,
         decoration: InputDecoration(
           hintText: 'Book Title?',
           enabledBorder: OutlineInputBorder(
@@ -26,17 +29,12 @@ class SearchTextField extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(12),
           ),
-          suffixIcon: Opacity(
+          suffixIcon: const Opacity(
             opacity: 0.7,
-            child: IconButton(
-              onPressed: () {
-                //TODO Search
-              },
-              icon: const Icon(
-                FontAwesomeIcons.magnifyingGlass,
-                size: 18,
-                color: Colors.white,
-              ),
+            child: Icon(
+              FontAwesomeIcons.magnifyingGlass,
+              size: 18,
+              color: Colors.white,
             ),
           ),
         ),
